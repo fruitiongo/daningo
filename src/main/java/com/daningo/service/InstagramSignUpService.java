@@ -1,4 +1,4 @@
-package com.daningo.com.daningo.service;
+package com.daningo.service;
 
 public class InstagramSignUpService {
 }

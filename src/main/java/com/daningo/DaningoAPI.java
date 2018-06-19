@@ -1,6 +1,6 @@
 package com.daningo;
 
-import com.daningo.com.daningo.util.UITokenVerifier;
+import com.daningo.util.UITokenVerifier;
 import org.restlet.Application;
 import org.restlet.Restlet;
 import org.restlet.data.ChallengeScheme;

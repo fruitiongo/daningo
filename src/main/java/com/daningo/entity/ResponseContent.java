@@ -1,4 +1,4 @@
-package com.daningo.com.daningo.com.daningo.entity;
+package com.daningo.entity;
 
 import org.restlet.data.Method;
 

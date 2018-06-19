@@ -1,6 +1,6 @@
-package com.daningo.com.daningo.service;
+package com.daningo.service;
 
-import com.daningo.com.daningo.com.daningo.entity.ResponseContent;
+import com.daningo.entity.ResponseContent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.restlet.data.Header;
