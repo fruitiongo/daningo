@@ -7,6 +7,7 @@ import org.restlet.security.Verifier;
 public class UITokenVerifier implements Verifier {
     @Override
     public int verify(Request request, Response response) {
-        return 0;
+
+        return 1;
     }
 }

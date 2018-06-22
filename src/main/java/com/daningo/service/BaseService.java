@@ -16,6 +16,7 @@ public class BaseService extends ServerResource {
     {
         super();
     }
+
     void setResponseHeaders()
     {
         Series<Header> responseHeaders = (Series<Header>) getResponse()
