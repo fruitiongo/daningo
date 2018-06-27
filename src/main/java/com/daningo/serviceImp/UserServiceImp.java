@@ -1,6 +1,7 @@
 package com.daningo.serviceImp;
 
 import com.daningo.entity.User;
+import com.daningo.entity.UserRating;
 import com.daningo.mappers.UserMapper;
 import com.daningo.service.UIService;
 
@@ -16,6 +17,7 @@ import java.util.Map;
 /**
  * Created by naing on 6/21/18.
  */
+
 public class UserServiceImp implements UIService<User>  {
 
     @Inject
@@ -25,6 +27,10 @@ public class UserServiceImp implements UIService<User>  {
 
     public List<User> getAll(){
         return null;
+    }
+
+    public List<UserRating> getAllUsersWithRating() {
+        return this.userMapper.getUsers();
     }
 
     @Override

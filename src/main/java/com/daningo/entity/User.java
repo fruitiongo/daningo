@@ -74,4 +74,12 @@ public class User {
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
+
+    public boolean valid() {
+        if(username == null)
+            return false;
+        if(fullName == null)
+            return false;
+        return true;
+    }
 }

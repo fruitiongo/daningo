@@ -1,6 +1,9 @@
 package com.daningo.modules;
 
 import com.daningo.db.DBPropertiesProvider;
+import com.daningo.db.ProdDBPropertiesProvider;
+import com.daningo.mappers.MessageMapper;
+import com.daningo.mappers.TopicMapper;
 import com.daningo.mappers.UserMapper;
 import com.daningo.util.EnvironmentProvider;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
@@ -23,6 +26,8 @@ public class UIMyBatisModule extends MyBatisModule {
     protected void initialize() {
         EnvironmentProvider environmentProvider = EnvironmentProvider.getEnvironmentProvider();
 
+
+        dbPropertiesProvider = new ProdDBPropertiesProvider();
         install(JdbcHelper.MySQL);
         bindDataSourceProviderType(C3p0DataSourceProvider.class);
         bindTransactionFactoryType(JdbcTransactionFactory.class);
@@ -30,6 +35,9 @@ public class UIMyBatisModule extends MyBatisModule {
         bindProperties(binder(), dbPropertiesProvider.getDBProperties());
 
         addMapperClass(UserMapper.class);
+        addMapperClass(TopicMapper.class);
+        addMapperClass(MessageMapper.class);
+
 
     }
 
