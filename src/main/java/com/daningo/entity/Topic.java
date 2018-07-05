@@ -1,5 +1,7 @@
 package com.daningo.entity;
 
+import java.util.List;
+
 public class Topic {
     long timestamp;
     String topic;
@@ -8,6 +10,8 @@ public class Topic {
     int topicID;
     UserTopic userTopic;
     Message description;
+
+    //List<Message> messages;
 
     public Message getDescription() {
         return description;
@@ -67,6 +71,15 @@ public class Topic {
         this.topic = topic;
     }
 
+    /*
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+    */
 
     @Override
     public boolean equals(Object obj) {

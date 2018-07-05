@@ -3,12 +3,21 @@ package com.daningo.entity;
 import com.sun.istack.internal.NotNull;
 
 public class Message {
-    User user;
+    //User user;
     int messageID;
     int topicID;
+    int userID;
     String message;
     long timestamp;
     String type;
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
 
     public void setTopicID(int topicID) {
         this.topicID = topicID;
@@ -50,6 +59,7 @@ public class Message {
         this.type = type;
     }
 
+    /*
     public User getUser() {
         return user;
     }
@@ -57,6 +67,7 @@ public class Message {
     public void setUser(User user) {
         this.user = user;
     }
+    */
 
     @Override
     public boolean equals(Object obj) {

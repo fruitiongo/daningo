@@ -46,6 +46,7 @@ public interface TopicMapper {
     })
     Message getTopicDescription(int topicID);
 
+
     @Insert("insert into topics (topic, amount, timestamp) values (#{topic}, #{amount}, #{timestamp})")
     @Options(useGeneratedKeys = true, keyProperty = "topicID", keyColumn="topic_id")
     void createTopic(Topic topic);

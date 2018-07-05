@@ -9,10 +9,47 @@ public class User {
     int userID;
     String username;
     String fullName;
+    String firstName;
+    String lastName;
+    String email;
     String profilePicture;
+    String password;
     long signupTimestamp;
     long lastLoginTimestamp;
     int isInfluencer;
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public int getIsInfluencer() {
         return isInfluencer;
@@ -76,9 +113,12 @@ public class User {
     }
 
     public boolean valid() {
-        if(username == null)
+
+        if(email == null)
             return false;
-        if(fullName == null)
+        if(firstName == null)
+            return false;
+        if(lastName == null)
             return false;
         return true;
     }

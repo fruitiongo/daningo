@@ -1,5 +1,6 @@
 package com.daningo.serviceImp;
 
+import com.daningo.entity.Stripe;
 import com.daningo.entity.User;
 import com.daningo.entity.UserRating;
 import com.daningo.mappers.UserMapper;
@@ -58,5 +59,13 @@ public class UserServiceImp implements UIService<User>  {
     @Override
     public User get(User model) {
         return this.userMapper.getUser(model.getUserID());
+    }
+
+    public User auth(String email, String password) {
+        return this.userMapper.auth(email, password);
+    }
+
+    public Stripe getStripeCustomer(int userID){
+        return this.userMapper.getStripeCustomer(userID);
     }
 }

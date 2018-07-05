@@ -3,7 +3,8 @@ package com.daningo.util;
 public class APIConstant {
     public static final String USER = "user",
     TOPIC = "topic",
-    MESSAGE = "message";
+    MESSAGE = "message",
+    PAYMENT = "payment";
 
 
     public static final String ERROR ="Error",

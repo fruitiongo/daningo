@@ -41,7 +41,7 @@ public class TopicService extends BaseService {
                 }else {
                     topic.setUserTopic(new UserTopic());
                     topic.setDescription(new Message());
-                    topic.getDescription().setUser(new User());
+                   // topic.getDescription().setUser(new User());
                 }
 
                 responseJson = getResponseJSON(topic, "");
@@ -86,7 +86,8 @@ public class TopicService extends BaseService {
             topic.setTimestamp(timestamp.getTime()/1000);
             topicServiceImp.add(topic);
             topic.getDescription().setTopicID(topic.getTopicID());
-            topic.getDescription().getUser().setUserID(userID);
+            topic.getDescription().setUserID(userID);
+            //topic.getDescription().getUser().setUserID(userID);
             topic.getDescription().setTimestamp(timestamp.getTime()/1000);
 
             topicServiceImp.addTopicUser(topic.getTopicID(), userID, "user");

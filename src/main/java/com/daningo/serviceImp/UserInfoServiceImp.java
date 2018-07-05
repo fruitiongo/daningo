@@ -1,14 +1,14 @@
 package com.daningo.serviceImp;
 
-import com.daningo.entity.UserInfo;
 import com.daningo.mappers.UserMapper;
 import com.daningo.service.UIService;
 import com.google.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
+import com.daningo.entity.UserInstagram;
 
 import java.util.List;
 
-public class UserInfoServiceImp implements UIService<UserInfo> {
+public class UserInfoServiceImp implements UIService<UserInstagram> {
 
     @Inject
     private SqlSession sqlSession;
@@ -16,32 +16,32 @@ public class UserInfoServiceImp implements UIService<UserInfo> {
     private UserMapper userMapper;
 
     @Override
-    public List<UserInfo> getAll() {
+    public List<UserInstagram> getAll() {
         return null;
     }
 
     @Override
-    public List<UserInfo> getAll(int id) {
+    public List<UserInstagram> getAll(int id) {
         return null;
     }
 
     @Override
-    public UserInfo get(UserInfo model) {
+    public UserInstagram get(UserInstagram model) {
         return null;
     }
 
     @Override
-    public UserInfo add(UserInfo model) {
+    public UserInstagram add(UserInstagram model) {
         return null;
     }
 
     @Override
-    public void update(UserInfo model) {
+    public void update(UserInstagram model) {
 
     }
 
     @Override
-    public List<UserInfo> getAll(UserInfo model) {
+    public List<UserInstagram> getAll(UserInstagram model) {
         return null;
     }
 }
