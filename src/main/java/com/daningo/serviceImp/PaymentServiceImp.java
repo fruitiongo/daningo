@@ -21,7 +21,7 @@ public class PaymentServiceImp implements UIService<UserPayment> {
 
     @Override
     public void update(UserPayment model) {
-
+        this.paymentMapper.updatePayment(model);
     }
 
     @Override
@@ -31,16 +31,20 @@ public class PaymentServiceImp implements UIService<UserPayment> {
 
     @Override
     public UserPayment get(UserPayment model) {
-        return null;
+        return this.paymentMapper.getPayment(model);
     }
 
     @Override
     public List<UserPayment> getAll(int id) {
-        return null;
+        return this.paymentMapper.getPayments(id);
     }
 
     @Override
     public List<UserPayment> getAll() {
         return null;
+    }
+
+    public UserPayment getStripe(UserPayment model) {
+        return this.paymentMapper.getStripePayment(model);
     }
 }

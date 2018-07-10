@@ -1,16 +1,23 @@
 package com.daningo.service;
 
+import com.daningo.DaningoAPI;
+import com.daningo.entity.StripeUser;
+import com.daningo.entity.User;
 import com.daningo.entity.UserTransaction;
 import com.daningo.serviceImp.TransactionServiceImp;
+import com.daningo.serviceImp.UserServiceImp;
 import com.daningo.util.APIConstant;
 import com.daningo.util.DaningoAPIInjector;
+import com.daningo.util.StripeUtil;
 import com.google.gson.Gson;
 import org.restlet.data.MediaType;
 import org.restlet.representation.Representation;
 import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.Get;
 import org.restlet.resource.Post;
+import org.restlet.resource.Put;
 
+import javax.jws.soap.SOAPBinding;
 import java.sql.Timestamp;
 
 public class TransactionService extends BaseService {
@@ -42,24 +49,47 @@ public class TransactionService extends BaseService {
 
             int userID = Integer.parseInt(getRequest().getAttributes().get("userID").toString());
 
-            UserTransaction payment = gson.fromJson(postBody, UserTransaction.class);
+            UserTransaction transaction = gson.fromJson(postBody, UserTransaction.class);
             TransactionServiceImp transactionServiceImp = DaningoAPIInjector.getInjector().getInstance(TransactionServiceImp.class);
+            UserServiceImp userServiceImp = DaningoAPIInjector.getInjector().getInstance(UserServiceImp.class);
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            transaction.setPaymentTimestamp(timestamp.getTime()/1000);
 
-            if(payment.validPayment()) {
+            if(transaction.validPayment()) {
 
-                // get transaction Id from payment platform
-                String transactionID = "12131";
+                StripeUser stripeUser = userServiceImp.getStripeCustomer(userID);
 
-                // do something with transaction fail
+                if(stripeUser.getStripeID() != null) {
+                    // get transaction Id from payment platform
 
-                payment.setStripeTransactionID(transactionID);
+                    User user = new User();
+                    user.setUserID(userID);
+                    user = userServiceImp.get(user);
+                    transaction.getUserPayment().setUser(user);
+                    transaction = StripeUtil.createCharge(transaction);
 
-                transactionServiceImp.add(payment);
+                    // do something with transaction fail
 
-                responseJson = getResponseJSON(payment, APIConstant.PAYMENT);
+                    transaction.setStripeTransactionID(transaction.getStripeTransactionID());
+                    transactionServiceImp.add(transaction);
+                }
             }
+            responseJson = getResponseJSON(transaction, APIConstant.PAYMENT);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new StringRepresentation(responseJson, MediaType.APPLICATION_ALL_JSON);
+    }
+
+    @Put("JSON")
+    public Representation doPut(Representation entity) {
+        String responseJson = "{}";
+        try {
+            setResponseHeaders();
+            String postBody = entity.getText();
+            Gson gson = new Gson();
+            int userID = Integer.parseInt(getRequest().getAttributes().get("userID").toString());
         } catch (Exception e) {
             e.printStackTrace();
         }

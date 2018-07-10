@@ -1,6 +1,6 @@
 package com.daningo.entity;
 
-public class Stripe {
+public class StripeUser {
     int userID;
     String StripeID;
 

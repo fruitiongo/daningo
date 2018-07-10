@@ -1,10 +1,12 @@
 package com.daningo;
 
+import com.daningo.entity.UserPayment;
 import com.daningo.modules.UIMyBatisModule;
 import com.daningo.service.*;
 import com.daningo.util.DaningoAPIInjector;
 
 import com.google.inject.Guice;
+import org.apache.ibatis.transaction.Transaction;
 import org.restlet.Application;
 import org.restlet.Restlet;
 import org.restlet.routing.Router;
@@ -51,6 +53,8 @@ public class DaningoAPI extends Application {
         router.attach("/user/{userID}/topics/{topicID}/messages/{messageID}", MessageService.class);
         router.attach("/user/{userID}/rating", UserRatingService.class);
         router.attach("/user/{userID}/topic/{topicID}/rating" , UserRatingService.class);
+        router.attach("/user/{userID}/payment/{paymentID}", PaymentService.class);
+        router.attach("/user/{userID}/topic/{topicID}/transaction", TransactionService.class);
 
 
         //router.attach("/topics",TopicService.class);
@@ -59,6 +63,7 @@ public class DaningoAPI extends Application {
 
         // create payment api && get
         //router.attach("/user/{userID}/payment", UserPaymentService.class);
+
 
         router.attach("/user/{userID}/topic/{topicID}/payment", TransactionService.class);
 

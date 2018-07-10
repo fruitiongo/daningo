@@ -4,9 +4,10 @@ package com.daningo.mappers;
  * Created by naing on 6/21/18.
  */
 
-import com.daningo.entity.Stripe;
+import com.daningo.entity.StripeUser;
 import com.daningo.entity.User;
 import com.daningo.entity.UserRating;
+import com.daningo.util.StripeUtil;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -80,5 +81,8 @@ public interface UserMapper {
     @Results({
             @Result(column = "stripe_customer_id", property = "stripeCustomerID")
     })
-    Stripe getStripeCustomer(int userID);
+    StripeUser getStripeCustomer(int userID);
+
+    @Update("update users set stripe_customer_id = #{stripeID} where user_id = #{userID}")
+    void updateStripeCustomer(StripeUser stripeUser);
 }

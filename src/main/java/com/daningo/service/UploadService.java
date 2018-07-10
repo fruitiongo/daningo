@@ -12,6 +12,7 @@ public class UploadService extends BaseService {
         String responseJson = "{}";
         if(entity != null && MediaType.MULTIPART_FORM_DATA.equals(entity.getMediaType(),true)) {
 
+
         } else {
             setStatus(Status.CLIENT_ERROR_BAD_REQUEST,"Error");
 

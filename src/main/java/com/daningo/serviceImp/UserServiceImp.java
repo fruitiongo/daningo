@@ -1,18 +1,16 @@
 package com.daningo.serviceImp;
 
-import com.daningo.entity.Stripe;
+import com.daningo.entity.StripeUser;
 import com.daningo.entity.User;
 import com.daningo.entity.UserRating;
 import com.daningo.mappers.UserMapper;
 import com.daningo.service.UIService;
 
-import java.util.logging.Logger;
 import com.google.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -65,7 +63,9 @@ public class UserServiceImp implements UIService<User>  {
         return this.userMapper.auth(email, password);
     }
 
-    public Stripe getStripeCustomer(int userID){
+    public StripeUser getStripeCustomer(int userID){
         return this.userMapper.getStripeCustomer(userID);
     }
+
+    public void updateStripCustomer(StripeUser stripeUser) {this.userMapper.updateStripeCustomer(stripeUser);}
 }
